@@ -17,7 +17,7 @@ export default function Main() {
     setUsers([
       ...users,
       {
-        idUser: users[users.length - 1].idUser + 1,
+        idUser: users.length == 0 ? 1 : users[users.length - 1].idUser + 1,
         firstName: "AAA",
         lastName: "BBB",
       },
