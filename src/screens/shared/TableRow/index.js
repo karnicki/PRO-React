@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export default function TableRow({ user, setSelectedUser, selectedUser }) {
   return (
@@ -15,3 +16,17 @@ export default function TableRow({ user, setSelectedUser, selectedUser }) {
     </tr>
   );
 }
+
+TableRow.propTypes = {
+  user: PropTypes.shape({
+    idUser: PropTypes.number,
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+  }).isRequired,
+  setSelectedUser: PropTypes.func.isRequired,
+  selectedUser: PropTypes.shape({
+    idUser: PropTypes.number,
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+  }).isRequired,
+};

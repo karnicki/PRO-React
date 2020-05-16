@@ -21,7 +21,7 @@ export default function Table({ users, setSelectedUser, selectedUser }) {
   );
 }
 
-Table.PropTypes = {
+Table.propTypes = {
   users: PropTypes.arrayOf(PropTypes.object).isRequired,
   setSelectedUser: PropTypes.func.isRequired,
   selectedUser: PropTypes.shape({
