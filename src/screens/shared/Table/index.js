@@ -3,10 +3,18 @@ import PropTypes from "prop-types";
 import TableHeader from "../TableHeader";
 import TableRow from "../TableRow";
 
-export default function Table({ users, setSelectedUser, selectedUser }) {
+export default function Table({
+  users,
+  setSelectedUser,
+  selectedUser,
+  setSelectedHeader,
+}) {
   return (
     <table>
-      <TableHeader columnsNames={["id user", "first name", "last name"]} />
+      <TableHeader
+        columnsNames={["id user", "first name", "last name"]}
+        setSelectedHeader={setSelectedHeader}
+      />
       <tbody>
         {users.map((u) => (
           <TableRow
@@ -29,4 +37,5 @@ Table.propTypes = {
     firstName: PropTypes.string,
     lastName: PropTypes.string,
   }).isRequired,
+  setSelectedHeader: PropTypes.func.isRequired,
 };

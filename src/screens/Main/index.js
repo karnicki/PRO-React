@@ -12,6 +12,7 @@ export default function Main() {
 
   const [users, setUsers] = useState(usersInitial);
   const [selectedUser, setSelectedUser] = useState({});
+  const [selectedHeader, setSelectedHeader] = useState({});
 
   const addUser = (e) => {
     setUsers([
@@ -26,6 +27,53 @@ export default function Main() {
 
   const setCurrentlySelectedUser = (user) => {
     setSelectedUser(user);
+  };
+
+  function compareID(a, b) {
+    if (a.idUser < b.idUser) {
+      return -1;
+    }
+    if (a.idUser > b.idUser) {
+      return 1;
+    }
+    return 0;
+  }
+
+  function compareFirstName(a, b) {
+    if (a.firstName < b.firstName) {
+      return -1;
+    }
+    if (a.firstName > b.firstName) {
+      return 1;
+    }
+    return 0;
+  }
+
+  function compareLastName(a, b) {
+    if (a.LastName < b.lastName) {
+      return -1;
+    }
+    if (a.lastName > b.lastName) {
+      return 1;
+    }
+    return 0;
+  }
+
+  const setCurrentlySelectedHeader = (header) => {
+    setSelectedHeader(header);
+    switch (header) {
+      case "id user":
+        setUsers(users.sort(compareID));
+        break;
+      case "first name":
+        setUsers(users.sort(compareFirstName));
+        break;
+      case "last name":
+        setUsers(users.sort(compareLastName));
+        break;
+      default:
+        break;
+    }
   };
 
   const deleteUser = (e) => {
@@ -50,6 +98,8 @@ export default function Main() {
           users={users}
           setSelectedUser={setCurrentlySelectedUser}
           selectedUser={selectedUser}
+          setSelectedHeader={setCurrentlySelectedHeader}
+          selectedHeader={selectedHeader}
         />
       </div>
     </>
