@@ -28,6 +28,12 @@ export default function Main() {
     setSelectedUser(user);
   };
 
+  const deleteUser = (e) => {
+    const tmp = users;
+    tmp.pop();
+    setUsers([...tmp]);
+  };
+
   return (
     <>
       <Header />
@@ -36,6 +42,9 @@ export default function Main() {
         <br />
         <button type="button" onClick={addUser} className="btn">
           Dodaj uźytkownika
+        </button>
+        <button type="button" onClick={deleteUser} className="btn">
+          Usuń uźytkownika
         </button>
         <Table
           users={users}
