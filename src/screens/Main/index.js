@@ -14,11 +14,12 @@ export default function Main() {
   const [selectedUser, setSelectedUser] = useState({});
   const [selectedHeader, setSelectedHeader] = useState({});
 
-  const addUser = (e) => {
+  const addUser = () => {
     setUsers([
       ...users,
       {
-        idUser: users.length == 0 ? 1 : users[users.length - 1].idUser + 1,
+        idUser:
+          users.length == 0 ? 1 : Math.max(...users.map((x) => x.idUser)) + 1,
         firstName: "AAA",
         lastName: "BBB",
       },
@@ -63,23 +64,22 @@ export default function Main() {
     setSelectedHeader(header);
     switch (header) {
       case "id user":
-        setUsers(users.sort(compareID));
+        setUsers([...users.sort(compareID)]);
         break;
       case "first name":
-        setUsers(users.sort(compareFirstName));
+        setUsers([...users.sort(compareFirstName)]);
         break;
       case "last name":
-        setUsers(users.sort(compareLastName));
+        setUsers([...users.sort(compareLastName)]);
         break;
       default:
         break;
     }
   };
 
-  const deleteUser = (e) => {
-    const tmp = users;
-    tmp.pop();
-    setUsers([...tmp]);
+  const deleteUser = () => {
+    users.pop();
+    setUsers([...users]);
   };
 
   return (

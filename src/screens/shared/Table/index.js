@@ -8,12 +8,14 @@ export default function Table({
   setSelectedUser,
   selectedUser,
   setSelectedHeader,
+  selectedHeader,
 }) {
   return (
     <table>
       <TableHeader
         columnsNames={["id user", "first name", "last name"]}
         setSelectedHeader={setSelectedHeader}
+        selectedHeader={selectedHeader}
       />
       <tbody>
         {users.map((u) => (
@@ -38,4 +40,5 @@ Table.propTypes = {
     lastName: PropTypes.string,
   }).isRequired,
   setSelectedHeader: PropTypes.func.isRequired,
+  selectedHeader: PropTypes.string.isRequired,
 };
