@@ -78,7 +78,10 @@ export default function Main() {
   };
 
   const deleteUser = () => {
-    users.pop();
+    const index = users.indexOf(selectedUser);
+    if (index > -1) {
+      users.splice(index, 1);
+    }
     setUsers([...users]);
   };
 
